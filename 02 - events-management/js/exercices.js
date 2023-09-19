@@ -22,17 +22,49 @@ function myFunctionTouch(e) {
 }
 
 //Ex4
-let myDiv2 = document.getElementById('divEx4')
-let newText = 'Texte dans ma boite dialogue';
-myDiv2.innerHTML = newText;
-// cibler le click dans la div
-let recupClickDiv = myDiv2.addEventListener('click', myDiv2);
-console.log(recupClickDiv);
-function clickDiv(recupClickDiv){
-    if (recupClickDiv != false){
-        myDiv2.style.display = "none";
-    }
+let boiteDialogue = document.getElementById('divEx4')
+function fermerBoiteDeDialogue(){
+    boiteDialogue.style.display ="none";
 }
-// lancer la fonction lorsque la condition n'est pas respectée
-/*function myFunctionCloseDiv2(e) {
-}*/
+
+
+document.addEventListener("click",function(e){
+    if(!boiteDialogue.contains(e.target)){
+        fermerBoiteDeDialogue();
+    }
+
+});
+
+//Ex5
+
+let form = document.getElementById("formulaire");
+let buttonSubmit = document.querySelector(('input[type="submit"]'));
+let messageErreur = document.getElementById("messageError");
+
+buttonSubmit.addEventListener("click", function(e){
+e.preventDefault();
+
+let nom = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+if(!nom){
+    messageErreur.innerText = ("Merci de saisir un nom");
+}
+else if(!email){
+    messageErreur.innerText += (" \n Veuillez renseigner votre mail ");
+}
+else{
+    form.submit();
+    console.log(form);
+}
+}
+
+);
+ 
+//Ex6
+
+document.addEventListener("scroll",function(e){
+    document.querySelector("body").style.backgroundColor ="red";
+
+
+})
+
